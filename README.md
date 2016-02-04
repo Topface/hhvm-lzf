@@ -5,18 +5,14 @@ LZF extension to HHVM. Source from [pecl.php.net](http://pecl.php.net/package/lz
 ## Changes compared to the PHP-version
 
 - Commented out undocumented stream filters `lzf.compress`, `lzf.decomplress` (unsupported by ext_zend_compat)
-- In lzf_compress(), lzf_decompress() `WRONG_PARAM_COUNT;` -> `return;` (unsupported by ext_zend_compat)
+- In lzf_compress(), lzf_decompress() `WRONG_PARAM_COUNT;` error changed to `return;` (unsupported by ext_zend_compat)
 - Added explicit type conversion of results of emalloc(), ecalloc(), erealloc()
 - Converted tests to HHVM format
 
 ## Building
 
-To build it you'll need to build whole HHVM. Clone this repo to `<HHVM's dir>/hphp/runtime/ext_zend_compat/`, and run
-```
-cd <HHVM's dir>
-cmake .
-make -j <num cpus>
-sudo make isntall
-```
-
-Don't forget to add `hhvm.enable_zend_compat = true` to `php.ini` file.
+To build hhvm-lzf you need to build whole HHVM.
+- Clone this repo to `<HHVM's dir>/hphp/runtime/ext_zend_compat/`
+- Checkout branch `hhvm-prepared`
+- Compile hhvm as usual
+- Add `hhvm.enable_zend_compat = true` to your `php.ini` file.
